@@ -19,7 +19,7 @@ SECRET_KEY = 'g-%o2ds!8zj#%jru8x6)_)t5ya9%7i8p+pj64-50d*i%m!v*9='
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.106', 'localhost', '127.0.0.1']
 
 BOOTSTRAP3 = {
     'include_jquery': True,

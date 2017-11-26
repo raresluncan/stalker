@@ -1,0 +1,8 @@
+body {
+  /* background-color: #333;  ->  default navbar color */
+  background-color: #1c1c1c;
+}
+
+.navbar.stalker-navbar {
+  background-color: #1c1c1c;
+}
