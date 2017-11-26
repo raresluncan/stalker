@@ -1,10 +1,15 @@
+""" Models in stalker_app """
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
-from django.db.models import CharField, EmailField
+from django.db.models import CharField, IntegerField, ForeignKey, \
+    BooleanField, DateTimeField, EmailField, DateField, CASCADE, SET_NULL
+from django.core.validators import EmailValidator, MaxLengthValidator, \
+    MinLengthValidator, URLValidator, MaxValueValidator, MinValueValidator
+from django.utils import timezone
 
-class Date(models.Model):
+class Date(Model):
     """ Abstract class to store common attributes for all 'stalker_app' models.
 
         Use: Inherit from this class if you want your data timestamped at
@@ -31,10 +36,10 @@ class User(models.AbstractBaseUser, Date):
                                    characters"),
         ])
     email = EmailField(
-        max_length=64,
+        max_length=100,
         unique=True,
         validators=[
-                MaxLengthValidator(64,  message="Email must be at most 64 \
+                MaxLengthValidator(100,  message="Email must be at most 64 \
                                    characters"),
                 MinLengthValidator(3,   message="Email must be at least 3 \
                                    characters"),
