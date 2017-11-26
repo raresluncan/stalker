@@ -1,10 +1,17 @@
+""" Models in stalker_app """
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models
-from django.db.models import CharField, EmailField
+from django.contrib.auth.models import AbstractBaseUser
+from django.db.models import Model, CharField, IntegerField, ForeignKey, \
+    BooleanField, DateTimeField, EmailField, DateField, CASCADE, DecimalField
+from django.core.validators import EmailValidator, MaxLengthValidator, \
+    MinLengthValidator, URLValidator, MaxValueValidator, MinValueValidator
+from django.utils import timezone
 
-class Date(models.Model):
+from . managers import UserManager
+
+class Date(Model):
     """ Abstract class to store common attributes for all 'stalker_app' models.
 
         Use: Inherit from this class if you want your data timestamped at
@@ -17,7 +24,7 @@ class Date(models.Model):
         abstract = True
 
 
-class User(models.AbstractBaseUser, Date):
+class User(AbstractBaseUser, Date):
     """ Model containing all user attributes.Uses 'UserManager' from managers
     """
 
@@ -25,22 +32,30 @@ class User(models.AbstractBaseUser, Date):
     name = CharField(
         max_length=64,
         validators=[
-                MaxLengthValidator(64,  message="Name must be at most 64 \
+                MaxLengthValidator(100,  message="Name must be at most 100 \
                                    characters"),
                 MinLengthValidator(3,   message="Name must be at least 3 \
                                    characters"),
         ])
     email = EmailField(
-        max_length=64,
+        max_length=100,
         unique=True,
         validators=[
-                MaxLengthValidator(64,  message="Email must be at most 64 \
+                MaxLengthValidator(100,  message="Email must be at most 100 \
                                    characters"),
                 MinLengthValidator(3,   message="Email must be at least 3 \
                                    characters"),
                 EmailValidator(message="Invalid email adress"),
         ],
     )
+    address = CharField(
+        max_length=100,
+        validators=[
+                MaxLengthValidator(100,  message="Address must be at most 100 \
+                                   characters"),
+                MinLengthValidator(3,   message="Address must be at least 3 \
+                                   characters"),
+        ])
     password = CharField(max_length=1000)
     is_super_admin = BooleanField(default=False)
 
@@ -64,3 +79,19 @@ class User(models.AbstractBaseUser, Date):
 
     class Meta:
         db_table = 'users'
+
+
+class Coordinate(Date):
+    latitude = DecimalField(validators=[
+            MaxValueValidator(90,  message="Latitude must be up to 90"),
+            MinLengthValidator(-90,   message="Latitude must be a minimum of \
+                -90")],
+            max_digits=10, decimal_places=8, default=0)
+    longitude = DecimalField(validators=[
+            MaxValueValidator(180,  message="Longitude must be up to 180"),
+            MinLengthValidator(-90,   message="Longitude must be a minimum of \
+                -180")],
+            max_digits=10, decimal_places=8, default=0)
+
+    class Meta:
+        db_table = 'coordinates'

@@ -1,0 +1,28 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<head>
+  {% block head_content %}
+    <meta charset=“UTF-8“ />
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="../../static/app/css/index.css" />
+  {% endblock %}
+</head>
+
+<body>
+  {% block header %}
+    such header
+  {% endblock %}
+
+  {% block content %}
+    {% block javascript %}
+      <script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip(); });</script>
+    {% endblock %}
+  {% endblock %}
+
+
+  {% block footer %}
+  {% endblock %}
+
+</body>
