@@ -10,12 +10,12 @@
   {% endblock %}
 </head>
 
-<body>
+<body id="particles-js">
   {% block header %}
     <nav class="navbar stalker-navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{% url 'stalker_app:home' %}">
             <span class="glyphicon glyphicon-home"></span>
             Stalker
           </a>
@@ -28,7 +28,7 @@
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         <li><a href="{% url 'stalker_app:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </nav>
@@ -36,7 +36,8 @@
 
   {% block content %}
     {% block javascript %}
-        <script src="../../static/stalker_app/js/common.js" ></script>
+      <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+      <script src="../../static/stalker_app/js/common.js" ></script>
     {% endblock %}
   {% endblock %}
 </body>

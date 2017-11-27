@@ -6,3 +6,7 @@ body {
 .navbar.stalker-navbar {
   background-color: #1c1c1c;
 }
+
+.button-glyph {
+  margin-right: 10px;
+}

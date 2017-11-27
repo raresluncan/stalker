@@ -1,3 +1,5 @@
-.carousel .carousel-inner .item.carousel-image {
-  height: 500px;
+@media screen and (min-width: 878px) {
+  .carousel .carousel-inner .item.carousel-image {
+    height: 500px;
+  }
 }

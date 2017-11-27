@@ -7,3 +7,6 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 def home(request):
     return render(request, 'stalker_app/home.html', {})
+
+def login(request):
+    return render(request, 'stalker_app/login.html', {})
