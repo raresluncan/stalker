@@ -1,0 +1,40 @@
+.login-particles {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+
+.login-form-container .input-group {
+  margin-top: 50px;
+}
+
+.login-form-container {
+  margin: 100px auto;
+  max-width: 500px;
+  background-color: transparent;
+  border-radius: 10px;
+  transition: border 0.4s;
+  transition: box-shadow 0.4s;
+  transition: background-color 0.4s;
+}
+
+.login-form-container:hover {
+  border: 1px solid rgba(#f0ad4e, 0.52);
+  box-shadow: 0 0 5px #f0ad4e;
+  background-color: #1c1c1c;
+  transition: border 0.4s;
+  transition: box-shadow 0.4s;
+  transition: background-color 0.8s;
+}
+
+.submit-button {
+  margin-top: 30px;
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .login-form-container {
+    margin-top: 250px;
+    max-width: 300px;
+  }
+}

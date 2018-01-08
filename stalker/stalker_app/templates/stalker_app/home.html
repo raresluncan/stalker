@@ -5,18 +5,23 @@
     {{ block.super }}
     <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../../static/stalker_app/css/home.css" />
-    <link rel="stylesheet" href="../../static/stalker_app/css/_carousel.css" />
-    <link rel="stylesheet" href="../../static/stalker_app/css/home_arrows.css" />
+      <link rel="stylesheet" href="../../static/stalker_app/css/_carousel.css" />
   {% endblock %}
 </head>
 
 {% block content %}
+  <div class="container-fluid carousel-home">
     {% include 'partials/_carousel.html' %}
-    <div class="container-fluid">
-    
+  </div>
+  <div class="container-fluid home-content">
+    <div class="container bounce">
+      <span class="glyphicon glyphicon-menu-down bounce-icon"></span>
     </div>
-    {% block javascript %}
-      {{ block.super }}
-      <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-    {% endblock %}
+    <div class="container-fluid ">
+        lala
+    </div>
+  </div>
+  {% block javascript %}
+    {{ block.super }}
+  {% endblock %}
 {% endblock %}
