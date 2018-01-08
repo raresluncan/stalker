@@ -1,24 +1,15 @@
-.login-particles {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-}
-
-.login-form-container .input-group {
-  margin-top: 50px;
-}
-
-.login-form-container {
+.sign-up-form-container {
   margin: 100px auto;
-  max-width: 500px;
+  width: 500px;
   background-color: transparent;
   border-radius: 10px;
+  padding: 20px 50px 20px 50px;
   transition: border 0.4s;
   transition: box-shadow 0.4s;
   transition: background-color 0.4s;
 }
 
-.login-form-container:hover {
+.sign-up-form-container:hover {
   border: 1px solid rgba(#f0ad4e, 0.52);
   box-shadow: 0 0 5px #f0ad4e;
   background-color: #1c1c1c;
@@ -27,14 +18,13 @@
   transition: background-color 0.8s;
 }
 
-.submit-button {
-  margin-top: 30px;
-  display: none;
+.login-particles {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 }
 
-@media screen and (max-width: 767px) {
-  .login-form-container {
-    margin-top: 250px;
-    max-width: 300px;
-  }
+.form-group .control-label {
+  color: rgb(221, 221, 221);
+  font-size: 15px;
 }

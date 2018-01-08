@@ -19,10 +19,6 @@ App.setupButtons = function() {
 }
 
 App.setupAnimations = function() {
-  $('.login-form-container').animate({
-    width:'500px',
-    height:'300px',
-  },700)
 }
 
 $(document).ready(App.init)

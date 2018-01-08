@@ -27,11 +27,14 @@
           <li><a href="#">Page 3</a></li>
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
-         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+         <li><a href="{% url 'stalker_app:sign_up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
          <li><a href="{% url 'stalker_app:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </nav>
+    {% if request.user.is_authenticated %}
+
+    {% endif %}
   {% endblock %}
 
   {% block content %}

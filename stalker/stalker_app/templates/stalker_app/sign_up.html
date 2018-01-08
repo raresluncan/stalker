@@ -1,0 +1,25 @@
+{% extends 'stalker_app/layout.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+  {{ block.super }}
+  <link rel="stylesheet" href="../../static/stalker_app/css/sign_up.css" />
+{% endblock %}
+
+{% block content %}
+
+  <div class="sign-up-content particlesJS login-particles">
+    <div class="container sign-up-form-container" data-aos="zoom-in">
+      {% bootstrap_form registration_form %}
+      <div class="submit-button login-submit text-center">
+        <button type="button" class="btn btn-warning">
+          <span class="glyphicon glyphicon-user button-glyph"></span>Sign up</button>
+      </div>
+    </div>
+  </div>
+  {% block javascript %}
+    {{ block.super }}
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="../../static/stalker_app/js/particles/app.js" ></script>
+  {% endblock %}
+{% endblock %}
