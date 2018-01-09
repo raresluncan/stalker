@@ -1,0 +1,41 @@
+{% extends 'stalker_app/layout.html' %}
+
+<head>
+  {% block head_content %}
+    {{ block.super }}
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/stalker_app/css/common.css" />
+    <link rel="stylesheet" href="../../static/stalker_app/css/maps.css" />
+  {% endblock %}
+</head>
+
+{% block content %}
+  <div class="map-content">
+    <div class="container-fluid map-controls">
+      <div class="container row vertical-align">
+        <button type="button" class="btn btn-info map-control get-current-location">
+          <span class="glyphicon glyphicon-cloud button-glyph"></span>Current Location
+        </button>
+        <button type="button" class="btn btn-info map-control get-own-locations" data-get-locations-url="{{ get_locations_api }}">
+          <span class="glyphicon glyphicon-road button-glyph"></span>Your marked road
+        </button>
+        <button type="button" class="btn btn-info map-control mark-location" data-mark-location-url="{{ mark_location_api }}">
+          <span class="glyphicon glyphicon-map-marker button-glyph"></span>Mark current location
+        </button>
+      </div>
+    </div>
+    <div class="container-fluid map-container" >
+      <div id="map" class="map google-map"></div>
+    </div>
+    <div class="container loader-container">
+      <div class="loader"></div>
+      <div class="loader-text">Loading map ...</div>
+    </div>
+  </div>
+  {% block javascript %}
+    {{ block.super }}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ map_api_key }}&callback=initMap"
+    async defer></script>
+    <script src="../../static/stalker_app/js/maps/maps.js" ></script>
+  {% endblock %}
+{% endblock %}

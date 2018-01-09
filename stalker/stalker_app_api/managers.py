@@ -14,7 +14,7 @@ class UserManager(BaseUserManager):
     Sets the fields is_admin, is_active, is_staff according to the user that
     will be created.
     """
-    def create_user(self, name, email, password=None):
+    def create_user(self, name, email, address=None, password=None, *args, **kwargs):
         """ specify a name, email, and a password, to create a simple user
         """
         if not email:
@@ -22,7 +22,7 @@ class UserManager(BaseUserManager):
         if not password:
             raise ValueError('Password must be set')
         email = self.normalize_email(email)
-        user = self.model(name=name, email=email, is_admin=False,
+        user = self.model(name=name, email=email, address=address, is_admin=False,
                           is_active=True, is_staff=False)
         user.set_password(password)
         user.is_super_admin = False
@@ -30,7 +30,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-    def create_superuser(self, name, email, password=None):
+    def create_superuser(self, name, email, address=None, password=None, *args, **kwargs):
         """ specify a name, email, and a password, to create a super user
         """
         if not email:
@@ -38,7 +38,7 @@ class UserManager(BaseUserManager):
         if not password:
             raise ValueError('Password must be set')
         email = self.normalize_email(email)
-        user = self.model(name=name, email=email, is_admin=True,
+        user = self.model(name=name, email=email, is_admin=True, address=address,
                          is_active=True, is_staff=True)
         user.set_password(password)
         user.is_super_admin = True

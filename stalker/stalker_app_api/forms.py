@@ -8,7 +8,7 @@ from django.forms import Form, ModelForm, CharField, TextInput, PasswordInput, \
 from django.core.validators import EmailValidator, MaxLengthValidator, \
     MinLengthValidator
 
-from .models import User
+from stalker_app_api.models import User
 
 class BaseUserForm(ModelForm):
     """ form used to edit a specifc user object or create a new one """
@@ -17,8 +17,8 @@ class BaseUserForm(ModelForm):
         model = User
         fields = ('name', 'email', 'address')
         widgets =  {
-            'name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}),
-            'email': TextInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),
+            'name': TextInput(attrs={'class': 'form-control required', 'placeholder': 'Name'}),
+            'email': TextInput(attrs={'class': 'form-control required', 'placeholder': 'Email'}),
             'address': TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'}),
         }
         labels = {
@@ -46,7 +46,7 @@ class RegistrationForm(BaseUserForm):
         label='Password:',
         widget=PasswordInput(
             attrs={
-               'class': 'form-control',
+               'class': 'form-control required',
                'id': 'login-password',
                'placeholder': 'Password',
             }
@@ -67,7 +67,7 @@ class RegistrationForm(BaseUserForm):
         label='Confirm password:',
         widget=PasswordInput(
             attrs={
-               'class': 'form-control',
+               'class': 'form-control required',
                'placeholder': 'Confirm Password',
             }
         ),

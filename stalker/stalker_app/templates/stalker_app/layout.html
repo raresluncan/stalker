@@ -27,8 +27,13 @@
           <li><a href="#">Page 3</a></li>
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
-         <li><a href="{% url 'stalker_app:sign_up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-         <li><a href="{% url 'stalker_app:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         {% if request.user.is_authenticated %}
+            <li><a href="{% url 'stalker_app:maps' %}"><span class="glyphicon glyphicon-map-marker"></span> Maps</a></li>
+            <li><a href="#" class="logout-button" data-logout-url="{% url 'stalker_app_api:auth_logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+         {% else %}
+          <li><a href="{% url 'stalker_app:sign_up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="{% url 'stalker_app:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         {% endif %}
         </ul>
       </div>
     </nav>
@@ -41,6 +46,7 @@
     {% block javascript %}
       <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
       <script src="../../static/stalker_app/js/common.js" ></script>
+      <script src="../../static/stalker_app/js/auth/logout.js" ></script>
     {% endblock %}
   {% endblock %}
 </body>

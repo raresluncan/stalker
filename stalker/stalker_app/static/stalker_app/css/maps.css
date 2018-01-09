@@ -1,0 +1,16 @@
+.map-container .map.google-map {
+  width:100%; height: 400px;
+}
+
+.map-controls {
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.map-content {
+  margin: 100px auto;
+}
+
+.map-control {
+  width: 200px;
+}
