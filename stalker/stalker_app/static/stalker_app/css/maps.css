@@ -14,3 +14,12 @@
 .map-control {
   width: 200px;
 }
+
+.view-as-notifier .alert {
+  font-size: 15px;
+  padding: 40px 5px 40px 5px;
+}
+
+.buttons.col-sm-10 {
+  padding-left: 0px;
+}

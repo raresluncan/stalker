@@ -16,6 +16,21 @@ App.setupButtons = function() {
   });
 }
 
+App.generateNotify = function(text, type, timer) {
+  $.notify(text, {
+  	animate: {
+  		enter: 'animated fadeInRight',
+  		exit: 'animated fadeOutLeft'
+  	},
+    timer: timer,
+    type: type,
+    placement: {
+		    from: "bottom",
+		    align: "left"
+	  },
+  });
+}
+
 App.getCookie = function (name) {
     var cookieValue = null;
     if (document.cookie && document.cookie != '') {

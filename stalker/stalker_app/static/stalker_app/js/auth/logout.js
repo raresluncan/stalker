@@ -7,7 +7,6 @@ App.logout.init = function() {
 App.logout.setupLogoutButton = function() {
   $('.logout-button').on('click', function(e) {
     e.preventDefault();
-    debugger;
     $.ajax({
         url: $(e.target).data('logout-url'),
         type: 'POST',

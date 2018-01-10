@@ -22,12 +22,18 @@ App.signUp.attemptSignUp = function($signUpForm, signUpUrl) {
         xhr.setRequestHeader("X-CSRFToken", App.getCookie('csrftoken'));
       },
       success: function(data) {
-        console.log('yay new usar yyaaaaa');
+        App.generateNotify('Your account was created!', "success", 1500);
       },
       error: function(data) {
+        debugger;
+        var errors = jQuery.parseJSON(data.responseJSON.errors)
         $signUpForm.find('.form-group').each(function(index, element){
-          App.formErrorsOrSuccess($(element), data.errors);
+          App.formErrorsOrSuccess(
+            $(element),
+            errors,
+          );
         });
+        App.generateNotify('Some errors occured!', "danger", 1500);
       }
     });
 }

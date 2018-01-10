@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
 
-from stalker_app_api.forms import RegistrationForm
+from stalker_app_api.forms import RegistrationForm, RegistrationFormAdmin
 from .helper_functions import is_super_admin
 
 def home(request):
@@ -26,10 +26,25 @@ def sign_up(request):
     }
     return render(request, 'stalker_app/sign_up.html', context)
 
+
+@login_required
 def maps(request):
     context = {
         'map_api_key': settings.MAPS_API_KEY,
         'mark_location_api': reverse('stalker_app_api:mark_location'),
         'get_locations_api': reverse('stalker_app_api:get_locations_for_user'),
+        'get_users_api': reverse('stalker_app_api:get_users'),
     }
     return render(request, 'stalker_app/maps.html', context)
+
+
+@user_passes_test(is_super_admin, login_url='/')
+@login_required
+def users(request):
+    context = {
+        'get_users_api': reverse('stalker_app_api:get_users'),
+        'change_user_admin_api': reverse('stalker_app_api:change_user_admin'),
+        'registration_form': RegistrationFormAdmin(),
+        'new_user_url': reverse('stalker_app_api:new_user')
+    }
+    return render(request, 'stalker_app/users.html', context)

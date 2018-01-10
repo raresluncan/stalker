@@ -81,6 +81,7 @@ class User(AbstractBaseUser, Date):
 
     def to_dict(self):
         return {
+            "pk": self.id,
             "name": self.name,
             "email": self.email,
             'address': self.address,

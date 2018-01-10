@@ -83,3 +83,7 @@ class RegistrationForm(BaseUserForm):
             self.add_error('confirm_password', "Passwords don't match")
 
         return cleaned_data
+
+class RegistrationFormAdmin(RegistrationForm):
+    class Meta(RegistrationForm.Meta):
+        fields = ('name', 'email', 'address', 'is_super_admin')

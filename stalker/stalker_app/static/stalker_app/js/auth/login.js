@@ -10,12 +10,7 @@ App.login.setupLoginButton = function() {
   })
 }
 
-App.login.generateLoginFormErrors = function($loginForm, responseErrors) {
-
-}
-
 App.login.attemptLogin = function($loginForm, login_url) {
-  debugger;
   $.ajax({
       url: login_url,
       type: 'POST',
@@ -25,10 +20,11 @@ App.login.attemptLogin = function($loginForm, login_url) {
         xhr.setRequestHeader("X-CSRFToken", App.getCookie('csrftoken'));
       },
       success: function(data) {
-        if (data.success == true) { window.location.replace("/"); }
+        if (data.success == true) { window.location.replace("/");
+      }
       },
       error: function(data) {
-        App.login.generateLoginFormErrors();
+        App.generateNotify('Invalid username or passowrd!', "danger", 1500);
       }
     });
 }
