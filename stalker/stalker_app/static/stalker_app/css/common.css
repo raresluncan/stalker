@@ -3,10 +3,42 @@ body {
   background-color: #1c1c1c;
 }
 
-.navbar.stalker-navbar {
-  background-color: #1c1c1c;
+.navbar.stalker-navbar {background-color: #1c1c1c;}
+
+.button-glyph { margin-right: 10px; }
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 6px solid #5bc0de;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
 }
 
-.button-glyph {
-  margin-right: 10px;
+.loader-container {
+  width: 100%;
+  height: 50%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+
+.loader-text {
+  margin-top: 15px;
+  font-size: 20px;
+  color: white;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

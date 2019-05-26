@@ -16,7 +16,7 @@
 .fa-angle-double-down:before {content: "\f103";}
 
 .bounce {
- position: absolute;
+ margin: 50px auto !important;
  bottom: 30px;
  left: 50% ;
  width: 60px;

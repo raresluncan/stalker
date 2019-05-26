@@ -1,4 +1,3 @@
-""" Models in stalker_app """
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
@@ -55,7 +54,10 @@ class User(AbstractBaseUser, Date):
                                    characters"),
                 MinLengthValidator(3,   message="Address must be at least 3 \
                                    characters"),
-        ])
+        ],
+        null=True,
+        blank=True,
+    )
     password = CharField(max_length=1000)
     is_super_admin = BooleanField(default=False)
 
@@ -77,11 +79,22 @@ class User(AbstractBaseUser, Date):
     def get_short_name(self):
         return self.name
 
+    def to_dict(self):
+        return {
+            "pk": self.id,
+            "name": self.name,
+            "email": self.email,
+            'address': self.address,
+            "is_super_admin": self.is_super_admin,
+            "is_active": self.is_active,
+        }
+
     class Meta:
         db_table = 'users'
 
 
 class Coordinate(Date):
+    user = ForeignKey(User, on_delete=CASCADE)
     latitude = DecimalField(validators=[
             MaxValueValidator(90,  message="Latitude must be up to 90"),
             MinLengthValidator(-90,   message="Latitude must be a minimum of \

@@ -24,10 +24,12 @@ ALLOWED_HOSTS = ['192.168.1.106', 'localhost', '127.0.0.1']
 BOOTSTRAP3 = {
     'include_jquery': True,
 }
+MAPS_API_KEY = 'AIzaSyDRJO8SWv5xj1llY32_tirL2gkQ7Kz5eRE'
 
 INSTALLED_APPS = [
     'bootstrap3',
     'stalker_app',
+    'stalker_app_api',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -104,12 +106,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'stalker_app.User'
+AUTH_USER_MODEL = 'stalker_app_api.User'
 
 AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.ModelBackend',
     )
 
 LOGIN_URL = '/login'
+
 LOGOUT_REDIRECT_URL = '/index'
 

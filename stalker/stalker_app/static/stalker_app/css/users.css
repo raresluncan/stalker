@@ -1,0 +1,44 @@
+tr {
+  /* background-color: #f8f9fa; */
+  background-color: rgb(50, 50, 50);
+  color: rgb(237, 237, 237);
+}
+
+.table-container {
+  margin-top: 10px;
+}
+
+.row .app-table-data-title {
+  border: 1px solid rgb(61, 61, 61);
+  padding: 10px 5px 10px 5px;
+}
+
+.row.app-table-title {
+  color: white;
+}
+
+.row.app-table-content {
+  color: white;
+  background-color: rgb(51, 51, 51);
+  font-size: 14px;
+}
+
+.row.app-table-content .app-table-data {
+  border: 1px solid rgb(71, 70, 70);
+  padding: 10px 5px 10px 5px;
+}
+
+.row.app-table-content:hover {
+    background-color: rgb(61, 61, 61);
+}
+
+.button-container {
+  margin-top: 100px;
+  padding-left: 0px;
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

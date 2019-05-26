@@ -1,11 +1,13 @@
 {% load bootstrap3 %}
 {% bootstrap_css %}
-{% bootstrap_javascript %}
 
 <head>
   {% block head_content %}
     <meta charset=“UTF-8“ />
     <!-- <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../static/stalker_app/css/common.css" />
   {% endblock %}
 </head>
@@ -27,8 +29,16 @@
           <li><a href="#">Page 3</a></li>
         </ul> -->
         <ul class="nav navbar-nav navbar-right">
-         <li><a href="{% url 'stalker_app:sign_up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-         <li><a href="{% url 'stalker_app:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         {% if request.user.is_authenticated %}
+           {% if request.user.is_super_admin %}
+             <li><a href="{% url 'stalker_app:users' %}"><span class="glyphicon glyphicon-user"></span> Users</a></li>
+           {% endif %}
+            <li><a href="{% url 'stalker_app:maps' %}"><span class="glyphicon glyphicon-map-marker"></span> Maps</a></li>
+            <li><a href="#" class="logout-button" data-logout-url="{% url 'stalker_app_api:auth_logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+         {% else %}
+          <li><a href="{% url 'stalker_app:sign_up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="{% url 'stalker_app:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         {% endif %}
         </ul>
       </div>
     </nav>
@@ -39,8 +49,12 @@
 
   {% block content %}
     {% block javascript %}
+      {% bootstrap_javascript %}
       <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.7/bootstrap-notify.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
       <script src="../../static/stalker_app/js/common.js" ></script>
+      <script src="../../static/stalker_app/js/auth/logout.js" ></script>
     {% endblock %}
   {% endblock %}
 </body>
